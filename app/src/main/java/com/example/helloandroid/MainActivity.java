@@ -18,149 +18,61 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.PopupWindow;
 
-public class MainActivity extends AppCompatActivity {
-    private static final String TAG = "MAIN_ACTIVITY";
-    private static final String NOTIFICATION_CHANNEL = "notification_test";
+import com.example.helloandroid.activities.BasicViewsActivity;
+import com.example.helloandroid.activities.RecyclerViewActivity;
+import com.example.helloandroid.adapters.MainListAdapter;
+import com.example.helloandroid.models.ListItemBean;
 
-    private NotificationManager manager;
-    private Notification notification;
+import java.util.ArrayList;
+import java.util.List;
+
+public class MainActivity extends AppCompatActivity {
+
+    List<ListItemBean> titleList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        setupButtonFunc();
-        setupNotification();
-        setupToolBar();
+        setupListItems();
+        setupListView();
     }
 
-    private void setupToolBar() {
-        Toolbar toolBar = findViewById(R.id.tool_bar);
-        toolBar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Log.e("toolBar", "click");
-            }
+    private void setupListItems() {
+        titleList.add(new ListItemBean("basic Views"));
+        titleList.add(new ListItemBean("RecyclerView"));
+    }
+
+    private void setupListView() {
+        ListView listView = findViewById(R.id.list_view);
+        listView.setAdapter(new MainListAdapter(titleList, this));
+        listView.setOnItemClickListener((adapterView, view, i, l) -> {
+            handleAction(i);
         });
     }
 
-    private void setupButtonFunc() {
-        Button btn = findViewById(R.id.btn_a);
-
-//        btn.setOnClickListener(view -> Log.e(TAG, "onClick"));
-
-        btn.setOnLongClickListener(view -> {
-            Log.e(TAG, "onLongClick");
-            // 如果此处返回true, 则不会执行onClick方法
-            return false;
-        });
-
-        btn.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-                Log.e(TAG, "onTouch"+ motionEvent.toString());
-                return false;
-            }
-        });
-    }
-
-    private void setupNotification(){
-        manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            NotificationChannel channel = new NotificationChannel(NOTIFICATION_CHANNEL, "测试",
-                    NotificationManager.IMPORTANCE_HIGH);
-            manager.createNotificationChannel(channel);
+    private void handleAction(int index) {
+        switch (titleList.get(index).getTitle()) {
+            case "basic Views":
+                startNewActivity(BasicViewsActivity.class);
+                break;
+            case "RecyclerView":
+                startNewActivity(RecyclerViewActivity.class);
+                break;
+            default:
+                break;
         }
-
-        Intent intent = new Intent(this, NotificationActivity.class);
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
-        notification = new NotificationCompat.Builder(this, NOTIFICATION_CHANNEL)
-                .setContentTitle("通知")
-                .setContentText("哈哈哈哈哈")
-                .setSmallIcon(R.drawable.ic_baseline_account_box_24)
-                .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.test))
-                .setColor(0xFF784839) //设置小图标颜色
-                .setContentIntent(pendingIntent) //设置点击通知后动作
-                .setAutoCancel(true) //点击通知后自动取消
-                //.setWhen() 设置创建时间
-                .build();
     }
 
-    public void onBtnClick(View view) {
-        Log.e(TAG, "onClick");
+    private void startNewActivity(Class<?> cls) {
+        Intent intent = new Intent(this, cls);
+        startActivity(intent);
     }
 
-    public void login(View view) {
-        EditText userName = findViewById(R.id.user_name);
-        EditText password = findViewById(R.id.password);
-        Log.e(TAG,
-                "userName: " + userName.getText().toString() + "\n" +
-                        "password: " + password.getText().toString());
-    }
-
-    public void sendNotification(View view) {
-        manager.notify(1, notification);
-    }
-
-    public void cancelNotification(View view) {
-        manager.cancel(1);
-    }
-
-    public void showDialog(View view) {
-        View dialog_view = getLayoutInflater().inflate(R.layout.dialog_view, null);
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        AlertDialog dialog = builder.setIcon(R.drawable.ic_baseline_security_24)
-                .setTitle("dialog Title")
-                .setMessage("dialog content")
-                .setView(dialog_view)
-                .setPositiveButton("确认", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        Log.i("dialog", "确认点击");
-                    }
-                })
-                .setNegativeButton("取消", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        Log.i("dialog", "取消点击");
-                    }
-                })
-                .setNeutralButton("信息", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        Log.i("dialog", "信息按钮点击");
-                    }
-                })
-                .create();
-        dialog.show();
-    }
-
-    public void showPopupWindow(View view) {
-        View popup_view = getLayoutInflater().inflate(R.layout.popup_window, null);
-
-        PopupWindow popupWindow = new PopupWindow(popup_view, ViewGroup.LayoutParams.WRAP_CONTENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT, true);
-        popupWindow.showAsDropDown(view);
-
-        popup_view.findViewById(R.id.pop_btn_1).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Log.e("popupWindow", "Btn1 Click");
-                popupWindow.dismiss();
-            }
-        });
-        popup_view.findViewById(R.id.pop_btn_2).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Log.e("popupWindow", "Btn2 Click");
-                popupWindow.dismiss();
-            }
-        });
-    }
 }

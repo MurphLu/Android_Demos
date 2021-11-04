@@ -1,9 +1,11 @@
-package com.example.helloandroid;
+package com.example.helloandroid.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
+
+import com.example.helloandroid.R;
 
 public class NotificationActivity extends AppCompatActivity {
 

@@ -24,6 +24,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.PopupWindow;
 
+import com.example.helloandroid.activities.AnimationActivity;
 import com.example.helloandroid.activities.BasicViewsActivity;
 import com.example.helloandroid.activities.RecyclerViewActivity;
 import com.example.helloandroid.adapters.MainListAdapter;
@@ -47,6 +48,8 @@ public class MainActivity extends AppCompatActivity {
     private void setupListItems() {
         titleList.add(new ListItemBean("basic Views"));
         titleList.add(new ListItemBean("RecyclerView"));
+        titleList.add(new ListItemBean("animation"));
+
     }
 
     private void setupListView() {
@@ -64,6 +67,9 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case "RecyclerView":
                 startNewActivity(RecyclerViewActivity.class);
+                break;
+            case "animation":
+                startNewActivity(AnimationActivity.class);
                 break;
             default:
                 break;

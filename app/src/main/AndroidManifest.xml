@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HelloAndroid">
         <activity
+            android:name=".activities.AnimationActivity"
+            android:exported="true" />
+        <activity
             android:name=".activities.RecyclerViewActivity"
             android:exported="true" />
         <activity

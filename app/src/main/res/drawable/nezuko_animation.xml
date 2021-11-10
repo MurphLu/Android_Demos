@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <animation-list xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:drawable="@drawable/nezuko_01" android:duration="120"/>
-    <item android:drawable="@drawable/nezuko_02" android:duration="120"/>
-    <item android:drawable="@drawable/nezuko_03" android:duration="120"/>
-    <item android:drawable="@drawable/nezuko_04" android:duration="120"/>
-    <item android:drawable="@drawable/nezuko_05" android:duration="120"/>
-    <item android:drawable="@drawable/nezuko_06" android:duration="120"/>
-    <item android:drawable="@drawable/nezuko_07" android:duration="120"/>
-    <item android:drawable="@drawable/nezuko_08" android:duration="120"/>
-    <item android:drawable="@drawable/nezuko_09" android:duration="120"/>
-    <item android:drawable="@drawable/nezuko_10" android:duration="120"/>
-    <item android:drawable="@drawable/nezuko_11" android:duration="120"/>
-    <item android:drawable="@drawable/nezuko_12" android:duration="120"/>
-    <item android:drawable="@drawable/nezuko_13" android:duration="120"/>
-    <item android:drawable="@drawable/nezuko_14" android:duration="120"/>
-    <item android:drawable="@drawable/nezuko_15" android:duration="120"/>
-    <item android:drawable="@drawable/nezuko_16" android:duration="120"/>
+    <item android:drawable="@drawable/nezuko_01" android:duration="100"/>
+    <item android:drawable="@drawable/nezuko_02" android:duration="100"/>
+    <item android:drawable="@drawable/nezuko_03" android:duration="100"/>
+    <item android:drawable="@drawable/nezuko_04" android:duration="100"/>
+    <item android:drawable="@drawable/nezuko_05" android:duration="100"/>
+    <item android:drawable="@drawable/nezuko_06" android:duration="100"/>
+    <item android:drawable="@drawable/nezuko_07" android:duration="100"/>
+    <item android:drawable="@drawable/nezuko_08" android:duration="100"/>
+    <item android:drawable="@drawable/nezuko_09" android:duration="100"/>
+    <item android:drawable="@drawable/nezuko_10" android:duration="100"/>
+    <item android:drawable="@drawable/nezuko_11" android:duration="100"/>
+    <item android:drawable="@drawable/nezuko_12" android:duration="100"/>
+    <item android:drawable="@drawable/nezuko_13" android:duration="100"/>
+    <item android:drawable="@drawable/nezuko_14" android:duration="100"/>
+    <item android:drawable="@drawable/nezuko_15" android:duration="100"/>
+    <item android:drawable="@drawable/nezuko_16" android:duration="100"/>
 </animation-list>

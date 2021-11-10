@@ -10,6 +10,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HelloAndroid">
         <activity
+            android:name=".feature.mvvm.home.MvvmDemoActivity"
+            android:exported="true"
+            android:label="@string/title_activity_mvvm_demo"
+            android:theme="@style/Theme.HelloAndroid.NoActionBar" />
+        <activity
+            android:name=".activities.ViewPagerActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activities.LayoutParamsActivity"
+            android:exported="true" />
+        <activity
             android:name=".activities.AnimationActivity"
             android:exported="true" />
         <activity

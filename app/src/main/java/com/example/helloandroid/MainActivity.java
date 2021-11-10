@@ -26,7 +26,9 @@ import android.widget.PopupWindow;
 
 import com.example.helloandroid.activities.AnimationActivity;
 import com.example.helloandroid.activities.BasicViewsActivity;
+import com.example.helloandroid.activities.LayoutParamsActivity;
 import com.example.helloandroid.activities.RecyclerViewActivity;
+import com.example.helloandroid.activities.ViewPagerActivity;
 import com.example.helloandroid.adapters.MainListAdapter;
 import com.example.helloandroid.models.ListItemBean;
 
@@ -49,7 +51,8 @@ public class MainActivity extends AppCompatActivity {
         titleList.add(new ListItemBean("basic Views"));
         titleList.add(new ListItemBean("RecyclerView"));
         titleList.add(new ListItemBean("animation"));
-
+        titleList.add(new ListItemBean("layout params"));
+        titleList.add(new ListItemBean("ViewPager"));
     }
 
     private void setupListView() {
@@ -70,6 +73,12 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case "animation":
                 startNewActivity(AnimationActivity.class);
+                break;
+            case "layout params":
+                startNewActivity(LayoutParamsActivity.class);
+                break;
+            case "ViewPager":
+                startNewActivity(ViewPagerActivity.class);
                 break;
             default:
                 break;
